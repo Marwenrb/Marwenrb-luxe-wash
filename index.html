@@ -13,6 +13,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+    <!-- OWL Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -226,52 +229,145 @@
           <span></span>
           <p>NOS PARTENAIRES</p>
         </div>
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div style="height: 12vw; width: 12vw; background: linear-gradient(45deg, #1e3a8a, #3b82f6); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.3vw; text-align: center;">
-                CONDOR<br/>ELECTRONICS
+        
+        <!-- Premium Partners Section with OWL Carousel -->
+        <div class="premium-partners-container">
+          <div class="partners-intro">
+            <h3 class="partners-subtitle">Partenaires Stratégiques en Cours de Négociation</h3>
+            <p class="partners-description">
+              Necib Luxe Wash s'associe avec les leaders du marché algérien pour créer un écosystème de services premium, 
+              garantissant innovation, qualité et durabilité dans chaque résidence universitaire.
+            </p>
+          </div>
+          
+          <div class="owl-carousel partners-carousel">
+            <!-- Condor Electronics -->
+            <div class="partner-card">
+              <div class="partner-card-inner">
+                <div class="partner-logo-container">
+                  <img src="./assets/images/NOS PARTENAIRES/320px-Condor_Electronics_logo.svg.png" alt="Condor Electronics" class="partner-logo">
+                  <div class="partner-status negotiating">En Négociation</div>
+                </div>
+                <div class="partner-content">
+                  <h4 class="partner-name">Condor Electronics</h4>
+                  <span class="partner-category">Partenaire Technologique</span>
+                  <p class="partner-description">
+                    Fournisseur exclusif de nos équipements de laverie premium (WashPro 6000 & DryMax 8000), 
+                    garantissant robustesse, innovation et efficacité énergétique pour une durabilité de 10 ans.
+                  </p>
+                  <div class="partner-features">
+                    <span class="feature-tag">Innovation</span>
+                    <span class="feature-tag">Durabilité</span>
+                    <span class="feature-tag">Efficacité</span>
+                  </div>
+                </div>
               </div>
-              <p>
-                Partenaire Technologique Stratégique. Fournisseur exclusif de nos équipements de laverie (WashPro 6000 & DryMax 8000), 
-                garantissant robustesse, innovation et efficacité énergétique pour une durabilité de 10 ans en usage intensif.
-              </p>
             </div>
-            <div class="swiper-slide">
-              <div style="height: 12vw; width: 12vw; background: linear-gradient(45deg, #2E8B57, #228B22); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5vw; text-align: center;">
-                MESRS<br/>ALGÉRIE
+
+            <!-- Ministère MESRS -->
+            <div class="partner-card">
+              <div class="partner-card-inner">
+                <div class="partner-logo-container">
+                  <img src="./assets/images/NOS PARTENAIRES/Embleme-minister1024- ministère de l'Enseignement supérieur et de la Recherche scientifique.png" alt="Ministère MESRS" class="partner-logo">
+                  <div class="partner-status institutional">Institutionnel</div>
+                </div>
+                <div class="partner-content">
+                  <h4 class="partner-name">MESRS Algérie</h4>
+                  <span class="partner-category">Partenaire Institutionnel</span>
+                  <p class="partner-description">
+                    Ministère de l'Enseignement Supérieur et de la Recherche Scientifique, acteur clé pour l'autorisation 
+                    et le déploiement dans les résidences universitaires, aligné sur la Vision Algérie 2030.
+                  </p>
+                  <div class="partner-features">
+                    <span class="feature-tag">Autorisation</span>
+                    <span class="feature-tag">Vision 2030</span>
+                    <span class="feature-tag">Résidences</span>
+                  </div>
+                </div>
               </div>
-              <p>
-                Partenaire Institutionnel Principal. Ministère de l'Enseignement Supérieur et de la Recherche Scientifique, 
-                acteur clé pour l'autorisation et le déploiement du projet au sein des résidences universitaires, aligné sur la Vision Algérie 2030.
-              </p>
             </div>
-            <div class="swiper-slide">
-              <div style="height: 12vw; width: 12vw; background: linear-gradient(45deg, #FF6B35, #F7931E); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2vw; text-align: center;">
-                CITEL &<br/>EDAHABIA
+
+            <!-- Citel & Edahabia -->
+            <div class="partner-card">
+              <div class="partner-card-inner">
+                <div class="partner-logo-container">
+                  <img src="./assets/images/NOS PARTENAIRES/carte-edahabia-baridimob-precisions-algerie-poste-citel edahabia.jpg" alt="Citel & Edahabia" class="partner-logo">
+                  <div class="partner-status financial">Financier</div>
+                </div>
+                <div class="partner-content">
+                  <h4 class="partner-name">Citel & Edahabia</h4>
+                  <span class="partner-category">Partenaires Financiers</span>
+                  <p class="partner-description">
+                    Intégration des plateformes de paiement numérique leaders en Algérie pour une expérience utilisateur 
+                    moderne et sécurisée, répondant à la croissance de 340% des transactions en ligne.
+                  </p>
+                  <div class="partner-features">
+                    <span class="feature-tag">Paiement Digital</span>
+                    <span class="feature-tag">Sécurité</span>
+                    <span class="feature-tag">Innovation</span>
+                  </div>
+                </div>
               </div>
-              <p>
-                Partenaires Financiers & Technologiques. Intégration des plateformes de paiement numérique leaders en Algérie 
-                pour offrir une expérience utilisateur moderne et sécurisée, répondant à la croissance de 340% des transactions en ligne.
-              </p>
             </div>
-            <div class="swiper-slide">
-              <div style="height: 12vw; width: 12vw; background: linear-gradient(45deg, #4A90E2, #357ABD); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2vw; text-align: center;">
-                CONTRACTEURS<br/>LOCAUX
+
+            <!-- Contracteurs Locaux -->
+            <div class="partner-card">
+              <div class="partner-card-inner">
+                <div class="partner-logo-container">
+                  <img src="./assets/images/NOS PARTENAIRES/construction316103813_std.332103016_std-contracteur locaux expert.jpg" alt="Contracteurs Locaux" class="partner-logo">
+                  <div class="partner-status deployment">Déploiement</div>
+                </div>
+                <div class="partner-content">
+                  <h4 class="partner-name">Contracteurs Experts</h4>
+                  <span class="partner-category">Partenaires de Déploiement</span>
+                  <p class="partner-description">
+                    Experts en installation et mise en conformité des infrastructures selon les normes algériennes (ONNA), 
+                    assurant une mise en œuvre rapide et sécurisée dans toutes les résidences.
+                  </p>
+                  <div class="partner-features">
+                    <span class="feature-tag">Installation</span>
+                    <span class="feature-tag">Conformité</span>
+                    <span class="feature-tag">Expertise</span>
+                  </div>
+                </div>
               </div>
-              <p>
-                Partenaires de Déploiement. Experts en installation et mise en conformité des infrastructures selon les normes algériennes (ONNA), 
-                assurant une mise en œuvre rapide et sécurisée dans toutes les résidences universitaires.
-              </p>
             </div>
-            <div class="swiper-slide">
-              <div style="height: 12vw; width: 12vw; background: linear-gradient(45deg, #8E44AD, #9B59B6); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1vw; text-align: center;">
-                STARTUPS<br/>ALGÉRIE
+
+            <!-- Startups Algérie -->
+            <div class="partner-card">
+              <div class="partner-card-inner">
+                <div class="partner-logo-container">
+                  <img src="./assets/images/NOS PARTENAIRES/Startup DZ-logo.png" alt="Startups Algérie" class="partner-logo">
+                  <div class="partner-status innovation">Innovation</div>
+                </div>
+                <div class="partner-content">
+                  <h4 class="partner-name">Startups Algérie</h4>
+                  <span class="partner-category">Partenaires d'Innovation</span>
+                  <p class="partner-description">
+                    En tant que projet innovant soutenu par le Décret Exécutif n° 20-254, nous collaborons avec 
+                    l'écosystème tech algérien pour le développement de solutions numériques avancées.
+                  </p>
+                  <div class="partner-features">
+                    <span class="feature-tag">Innovation</span>
+                    <span class="feature-tag">Tech</span>
+                    <span class="feature-tag">Digital</span>
+                  </div>
+                </div>
               </div>
-              <p>
-                Partenaires d'Innovation. En tant que projet innovant soutenu par le Décret Exécutif n° 20-254, 
-                nous collaborons avec l'écosystème tech algérien pour le développement de notre application mobile et d'autres solutions numériques.
-              </p>
+            </div>
+          </div>
+          
+          <!-- Partnership CTA -->
+          <div class="partnership-cta">
+            <div class="cta-content">
+              <h3>Rejoignez Notre Écosystème de Partenaires</h3>
+              <p>Ensemble, révolutionnons l'expérience étudiante en Algérie</p>
+              <a href="#contact" class="partnership-btn">
+                <span>Devenir Partenaire</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -699,6 +795,9 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- jQuery and OWL Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="script.js"></script>
       </body>
   </html>
