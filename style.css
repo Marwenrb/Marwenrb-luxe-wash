@@ -184,7 +184,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2.2vw;
+  padding: 1.5vw 2.2vw;
+  position: relative;
 }
 
 /* Premium Logo Frame */
@@ -192,8 +193,7 @@ nav {
   background: linear-gradient(135deg, #0b0500 0%, #1a1a1a 100%);
   border: 2px solid rgba(255, 107, 53, 0.3);
   border-radius: 15px;
-  padding: 0.8vw 1.2vw;
-  margin-bottom: 8vh; /* FIXED: Much more spacing for proper desktop positioning */
+  padding: 0.6vw 1vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -205,6 +205,7 @@ nav {
   overflow: hidden;
   will-change: transform, box-shadow;
   transform: translateZ(0); /* Hardware acceleration */
+  flex-shrink: 0;
 }
 
 .nav-logo::before {
@@ -232,7 +233,7 @@ nav {
 }
 
 .nav-logo img {
-  height: 68px !important;
+  height: 45px !important;
   width: auto !important;
   position: relative;
   z-index: 2;
