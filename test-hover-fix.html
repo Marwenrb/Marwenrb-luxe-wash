@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Images Test - Necib Luxe Wash</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .elem1 {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .elem1:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.2);
+        }
+        
+        .hover-image-div {
+            position: fixed;
+            height: 400px;
+            width: 300px;
+            z-index: 1000;
+            border-radius: 15px;
+            top: 10%;
+            right: 10%;
+            display: none;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            border: 3px solid #ff6b35;
+            transition: all 0.4s ease;
+        }
+        
+        .test-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0D9488;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .status {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+    <div class="status" id="status">Hover Image System: Loading...</div>
+    
+    <h1 class="test-title">🖼️ Test Hover Images - Necib Luxe Wash</h1>
+    
+    <div class="hover-image-div" id="hoverImageDiv"></div>
+    
+    <div class="test-container">
+        <div class="elem1" data-image="./assets/images/CARACTÉRISTIQUES CLÉS/Modern Laundromat with Neon Lighting.jpeg">
+            <h2>Équipements Modernes</h2>
+            <h5>CONDOR ELECTRONICS</h5>
+            <p>WashPro 6000 & DryMax 8000</p>
+        </div>
+        
+        <div class="elem1" data-image="./assets/images/CARACTÉRISTIQUES CLÉS/Mobile Payment Display.jpeg">
+            <h2>Paiements Digitaux</h2>
+            <h5>CITEL & EDAHABIA</h5>
+            <p>Solutions sécurisées</p>
+        </div>
+        
+        <div class="elem1" data-image="./assets/images/CARACTÉRISTIQUES CLÉS/iPhone with Colorful App Icons on Orange Background ( Mobie App ).jpeg">
+            <h2>Application Mobile</h2>
+            <h5>NECIB LUXE WASH</h5>
+            <p>Gestion intelligente</p>
+        </div>
+        
+        <div class="elem1" data-image="./assets/images/CARACTÉRISTIQUES CLÉS/Neon Open Sign open 24-7.jpeg">
+            <h2>Accès 24/7</h2>
+            <h5>DISPONIBILITÉ</h5>
+            <p>Service continu</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hoverDiv = document.getElementById('hoverImageDiv');
+            const cards = document.querySelectorAll('.elem1');
+            const status = document.getElementById('status');
+            
+            let currentHover = null;
+            
+            status.textContent = 'Hover Image System: Ready ✅';
+            console.log('🚀 Hover system initialized');
+            console.log('Found', cards.length, 'cards');
+            console.log('Hover div:', hoverDiv);
+            
+            cards.forEach((card, index) => {
+                const imagePath = card.getAttribute('data-image');
+                console.log(`Card ${index + 1}: ${imagePath}`);
+                
+                card.addEventListener('mouseenter', function() {
+                    if (currentHover === this) return;
+                    currentHover = this;
+                    
+                    const imageUrl = this.getAttribute('data-image');
+                    console.log('🖼️ Showing image:', imageUrl);
+                    
+                    status.textContent = `Showing: ${imageUrl.split('/').pop()}`;
+                    
+                    if (hoverDiv && imageUrl) {
+                        hoverDiv.style.backgroundImage = `url("${imageUrl}")`;
+                        hoverDiv.style.display = 'block';
+                        hoverDiv.style.opacity = '0';
+                        hoverDiv.style.transform = 'scale(0.9)';
+                        
+                        setTimeout(() => {
+                            hoverDiv.style.opacity = '1';
+                            hoverDiv.style.transform = 'scale(1)';
+                        }, 10);
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    currentHover = null;
+                    status.textContent = 'Hover Image System: Ready ✅';
+                    console.log('🔥 Hiding image');
+                    
+                    if (hoverDiv) {
+                        hoverDiv.style.opacity = '0';
+                        hoverDiv.style.transform = 'scale(0.95)';
+                        
+                        setTimeout(() => {
+                            hoverDiv.style.display = 'none';
+                            hoverDiv.style.backgroundImage = '';
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Test image loading
+            setTimeout(() => {
+                const testImage = new Image();
+                testImage.onload = function() {
+                    console.log('✅ Test image loaded successfully');
+                    status.textContent = 'Hover Image System: Ready ✅ (Images accessible)';
+                };
+                testImage.onerror = function() {
+                    console.error('❌ Test image failed to load');
+                    status.textContent = 'Hover Image System: ⚠️ Image path issues detected';
+                };
+                testImage.src = './assets/images/CARACTÉRISTIQUES CLÉS/Modern Laundromat with Neon Lighting.jpeg';
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 
