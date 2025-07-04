@@ -12751,26 +12751,3 @@ img {
 }
 
 .overlay
-position: relative !important;
-z-index: 100 !important;
-}
-
-.image-overlay {
-position: absolute;
-bottom: 0;
-left: 0;
-width: 100%;
-height: 30%;
-background: linear-gradient(135deg, rgba(15,15,35,0.95) 0%, rgba(26,26,46,0.9) 100%);
-backdrop-filter: blur(20px);
-display: flex !important;
-align-items: center;
-justify-content: center;
-padding: 20px;
-border-radius: 0 0 25px 25px;
-z-index: 110 !important;
-}
-
-.overlay
-
-}
