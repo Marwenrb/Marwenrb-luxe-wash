@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="desktop-features-fix.css" />
     <link rel="stylesheet" href="comprehensive-fixes.css" />
     <link rel="stylesheet" href="ultra-documents-v2.css" />
+    <link rel="stylesheet" href="premium-loader.css" />
   </head>
   <body>
     <div class="mover">
@@ -40,14 +41,117 @@
     </div>
     <div class="main">
       <div class="loader">
+        <!-- Dynamic Background Layers -->
+        <div class="loader-bg-layers">
+          <div class="bg-layer bg-layer-1"></div>
+          <div class="bg-layer bg-layer-2"></div>
+          <div class="bg-layer bg-layer-3"></div>
+        </div>
+        
+        <!-- Floating Steam/Cleanliness Effects -->
+        <div class="steam-effects">
+          <div class="steam-particle steam-1"></div>
+          <div class="steam-particle steam-2"></div>
+          <div class="steam-particle steam-3"></div>
+          <div class="steam-particle steam-4"></div>
+          <div class="steam-particle steam-5"></div>
+          <div class="steam-particle steam-6"></div>
+        </div>
+        
+        <!-- Sparkle/Light Effects -->
+        <div class="sparkle-effects">
+          <div class="sparkle sparkle-1"></div>
+          <div class="sparkle sparkle-2"></div>
+          <div class="sparkle sparkle-3"></div>
+          <div class="sparkle sparkle-4"></div>
+          <div class="sparkle sparkle-5"></div>
+          <div class="sparkle sparkle-6"></div>
+          <div class="sparkle sparkle-7"></div>
+          <div class="sparkle sparkle-8"></div>
+        </div>
+        
         <div class="loader-content">
+          <!-- 3D Logo Container with Washing Machine Drum Effect -->
           <div class="logo-container">
-            <img src="./assets/images/Logo-Necib-Wash.png" alt="Necib Luxe Wash" class="loader-logo">
+            <div class="washing-drum">
+              <div class="drum-inner">
+                <div class="drum-reflection"></div>
+                <div class="logo-holder">
+                  <div class="logo-shine"></div>
+                  <img src="./assets/images/Logo-Necib-Wash.png" alt="Necib Luxe Wash" class="loader-logo">
+                  <div class="logo-glass-effect"></div>
+                </div>
+                <!-- Water Sloshing Effect -->
+                <div class="water-effects">
+                  <div class="water-drop water-drop-1"></div>
+                  <div class="water-drop water-drop-2"></div>
+                  <div class="water-drop water-drop-3"></div>
+                  <div class="water-drop water-drop-4"></div>
+                </div>
+                <!-- Clothing Tumbling Effect -->
+                <div class="clothing-effects">
+                  <div class="clothing-item clothing-1"></div>
+                  <div class="clothing-item clothing-2"></div>
+                  <div class="clothing-item clothing-3"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h1 id="brand-name">NECIB LUXE WASH</h1>
-          <p id="brand-tagline">Spin vers une expérience de lavage d'élite</p>
+          
+          <!-- Enhanced Brand Name with Luxury Typography -->
+          <div class="brand-container">
+            <h1 id="brand-name">
+              <span class="brand-word brand-word-1">NECIB</span>
+              <span class="brand-word brand-word-2">LUXE</span>
+              <span class="brand-word brand-word-3">WASH</span>
+            </h1>
+            <div class="brand-shine-overlay"></div>
+          </div>
+          
+          <!-- Enhanced Tagline with Typewriter Effect -->
+          <div class="tagline-container">
+            <p id="brand-tagline">
+              <span class="tagline-word">Spin</span>
+              <span class="tagline-word">vers</span>
+              <span class="tagline-word">une</span>
+              <span class="tagline-word">expérience</span>
+              <span class="tagline-word">de</span>
+              <span class="tagline-word">lavage</span>
+              <span class="tagline-word">d'élite</span>
+            </p>
+          </div>
+          
+          <!-- Premium Progress Indicator -->
           <div class="loader-progress">
-            <div class="progress-bar"></div>
+            <div class="progress-container">
+              <!-- Liquid Fill Progress -->
+              <div class="liquid-progress">
+                <div class="liquid-fill"></div>
+                <div class="liquid-surface"></div>
+              </div>
+              
+              <!-- Glowing Ring Progress -->
+              <div class="ring-progress">
+                <svg class="progress-ring" viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3"/>
+                  <circle cx="60" cy="60" r="54" fill="none" stroke="url(#progressGradient)" stroke-width="3" 
+                          stroke-dasharray="339.292" stroke-dashoffset="339.292" class="progress-circle"/>
+                  <defs>
+                    <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#f7931e;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              
+              <!-- Progress Text -->
+              <div class="progress-text">
+                <span class="progress-percentage">0%</span>
+                <span class="progress-status">Initialisation...</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -899,6 +1003,7 @@
     <!-- jQuery and OWL Carousel JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="premium-loader.js"></script>
     <script src="script.js"></script>
     <script src="partners-carousel.js"></script>
   </body>
