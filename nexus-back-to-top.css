@@ -1,0 +1,521 @@
+/* =============================================== */
+/* === ULTRA-PREMIUM BACK TO TOP BUTTON      === */
+/* =============================================== */
+
+/* CSS Variables for consistent theming */
+:root {
+  --nexus-primary: #0a0a0a;
+  --nexus-secondary: #1a1a1a;
+  --nexus-accent: #ff6b35;
+  --nexus-gold: #f7931e;
+  --nexus-white: #ffffff;
+  --nexus-glass: rgba(255, 255, 255, 0.05);
+  --nexus-glass-border: rgba(255, 255, 255, 0.1);
+  --nexus-shadow: rgba(0, 0, 0, 0.3);
+  --nexus-glow: rgba(255, 107, 53, 0.3);
+}
+
+/* =============================================== */
+/* === MAIN BUTTON CONTAINER                  === */
+/* =============================================== */
+
+.nexus-back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 80px;
+  height: 80px;
+  z-index: 10000;
+  cursor: pointer;
+  transform: translateY(100px) scale(0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, opacity;
+  user-select: none;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+/* Visible state */
+.nexus-back-to-top.nexus-visible {
+  transform: translateY(0) scale(1) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hidden state */
+.nexus-back-to-top.nexus-hidden {
+  transform: translateY(100px) scale(0.8);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Hover state */
+.nexus-back-to-top.nexus-hover {
+  transform: translateY(-5px) scale(1.05) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+}
+
+/* Click state */
+.nexus-back-to-top.nexus-clicked {
+  transform: translateY(0) scale(0.95) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+}
+
+/* Fast scroll state */
+.nexus-back-to-top.nexus-fast-scroll {
+  animation: nexusFastScrollPulse 0.3s ease-out;
+}
+
+/* Scrolling state */
+.nexus-back-to-top.nexus-scrolling .nexus-progress-circle {
+  stroke-width: 4;
+  filter: drop-shadow(0 0 8px var(--nexus-accent));
+}
+
+/* Scroll complete state */
+.nexus-back-to-top.nexus-scroll-complete {
+  animation: nexusScrollComplete 0.8s ease-out;
+}
+
+/* =============================================== */
+/* === BACKGROUND LAYERS                      === */
+/* =============================================== */
+
+.nexus-btn-bg-layer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 107, 53, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  backdrop-filter: blur(25px);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+}
+
+.nexus-back-to-top.nexus-hover .nexus-btn-bg-layer {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 107, 53, 0.08) 100%);
+  border-color: rgba(255, 107, 53, 0.3);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(255, 107, 53, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* =============================================== */
+/* === GLOW RING                              === */
+/* =============================================== */
+
+.nexus-btn-glow-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, 
+    var(--nexus-accent) 0deg, 
+    var(--nexus-gold) 90deg, 
+    transparent 180deg, 
+    var(--nexus-accent) 360deg);
+  filter: blur(12px);
+  opacity: 0;
+  animation: nexusGlowRing 4s ease-in-out infinite;
+  z-index: -1;
+}
+
+.nexus-back-to-top.nexus-hover .nexus-btn-glow-ring {
+  opacity: 0.6;
+  filter: blur(16px);
+}
+
+/* =============================================== */
+/* === PARTICLE SYSTEM                        === */
+/* =============================================== */
+
+.nexus-btn-particle-system {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nexus-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--nexus-accent);
+  border-radius: 50%;
+  top: 100%;
+  animation: nexusParticleFloat 2s ease-out forwards;
+  box-shadow: 0 0 4px var(--nexus-accent);
+}
+
+/* =============================================== */
+/* === PROGRESS RING                          === */
+/* =============================================== */
+
+.nexus-progress-container {
+  position: absolute;
+  inset: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.nexus-progress-ring {
+  width: 100px;
+  height: 100px;
+  transform: rotate(-90deg);
+}
+
+.nexus-progress-circle {
+  transition: stroke-dashoffset 0.3s ease, stroke-width 0.3s ease;
+  transform-origin: center;
+}
+
+/* =============================================== */
+/* === CENTRAL CORE                           === */
+/* =============================================== */
+
+.nexus-btn-core {
+  position: absolute;
+  inset: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.nexus-back-to-top.nexus-hover .nexus-btn-core {
+  transform: translateY(-2px);
+}
+
+.nexus-icon-container {
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.nexus-arrow-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--nexus-white);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  transition: all 0.3s ease;
+}
+
+.nexus-back-to-top.nexus-hover .nexus-arrow-icon {
+  color: var(--nexus-accent);
+  transform: translateY(-2px) scale(1.1);
+  filter: drop-shadow(0 4px 12px rgba(255, 107, 53, 0.4));
+}
+
+.nexus-btn-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.nexus-back-to-top.nexus-hover .nexus-btn-text {
+  color: var(--nexus-accent);
+  transform: translateY(-1px);
+  text-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+}
+
+/* =============================================== */
+/* === MAGNETIC FIELD EFFECT                  === */
+/* =============================================== */
+
+.nexus-magnetic-field {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, 
+    rgba(255, 107, 53, 0.05) 0%, 
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.nexus-back-to-top.nexus-hover .nexus-magnetic-field {
+  opacity: 1;
+}
+
+/* =============================================== */
+/* === SHINE EFFECT                           === */
+/* =============================================== */
+
+.nexus-btn-shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 70%);
+  transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  pointer-events: none;
+}
+
+.nexus-back-to-top.nexus-hover .nexus-btn-shine {
+  transform: translateX(100%) translateY(100%) rotate(45deg);
+}
+
+/* =============================================== */
+/* === STATUS TEXT                            === */
+/* =============================================== */
+
+.nexus-status-text {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.nexus-back-to-top.nexus-hover .nexus-status-text {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* =============================================== */
+/* === RIPPLE EFFECT                          === */
+/* =============================================== */
+
+.nexus-back-to-top-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(255, 107, 53, 0.4) 0%, 
+    rgba(247, 147, 30, 0.2) 50%, 
+    transparent 70%);
+  transform: scale(0);
+  animation: nexusBackToTopRipple 1s cubic-bezier(0.23, 1, 0.32, 1);
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* =============================================== */
+/* === ANIMATIONS                             === */
+/* =============================================== */
+
+@keyframes nexusGlowRing {
+  0%, 100% { 
+    opacity: 0;
+    transform: rotate(0deg) scale(1);
+  }
+  50% { 
+    opacity: 0.4;
+    transform: rotate(180deg) scale(1.05);
+  }
+}
+
+@keyframes nexusParticleFloat {
+  0% { 
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(-60px) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes nexusFastScrollPulse {
+  0% { 
+    transform: translateY(0) scale(1) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+  }
+  50% { 
+    transform: translateY(-3px) scale(1.08) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+  }
+  100% { 
+    transform: translateY(0) scale(1) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+  }
+}
+
+@keyframes nexusScrollComplete {
+  0% { 
+    transform: translateY(0) scale(1) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+  }
+  25% { 
+    transform: translateY(-8px) scale(1.15) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+  }
+  50% { 
+    transform: translateY(0) scale(1.05) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+  }
+  75% { 
+    transform: translateY(-4px) scale(1.02) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+  }
+  100% { 
+    transform: translateY(0) scale(1) translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+  }
+}
+
+@keyframes nexusBackToTopRipple {
+  0% { 
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% { 
+    opacity: 0.6;
+  }
+  100% { 
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* =============================================== */
+/* === RESPONSIVE DESIGN                      === */
+/* =============================================== */
+
+@media (max-width: 768px) {
+  .nexus-back-to-top {
+    width: 70px;
+    height: 70px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .nexus-progress-ring {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .nexus-arrow-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .nexus-btn-text {
+    font-size: 8px;
+  }
+  
+  .nexus-status-text {
+    font-size: 9px;
+    bottom: -30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nexus-back-to-top {
+    width: 60px;
+    height: 60px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .nexus-progress-ring {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .nexus-arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .nexus-btn-text {
+    font-size: 7px;
+  }
+  
+  .nexus-status-text {
+    display: none; /* Hide on very small screens */
+  }
+}
+
+/* =============================================== */
+/* === ACCESSIBILITY                          === */
+/* =============================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .nexus-back-to-top,
+  .nexus-btn-bg-layer,
+  .nexus-btn-core,
+  .nexus-arrow-icon,
+  .nexus-btn-text,
+  .nexus-status-text,
+  .nexus-btn-shine,
+  .nexus-progress-circle {
+    transition: none;
+    animation: none;
+  }
+  
+  .nexus-btn-glow-ring,
+  .nexus-particle {
+    display: none;
+  }
+}
+
+/* Focus states for accessibility */
+.nexus-back-to-top:focus {
+  outline: 2px solid var(--nexus-accent);
+  outline-offset: 4px;
+}
+
+/* =============================================== */
+/* === HIGH CONTRAST MODE                     === */
+/* =============================================== */
+
+@media (prefers-contrast: high) {
+  .nexus-back-to-top {
+    border: 2px solid var(--nexus-white);
+  }
+  
+  .nexus-btn-bg-layer {
+    background: var(--nexus-secondary);
+    border-color: var(--nexus-white);
+  }
+  
+  .nexus-arrow-icon,
+  .nexus-btn-text {
+    color: var(--nexus-white);
+  }
+}
+
+/* =============================================== */
+/* === PERFORMANCE OPTIMIZATIONS              === */
+/* =============================================== */
+
+.nexus-back-to-top,
+.nexus-btn-bg-layer,
+.nexus-btn-core,
+.nexus-progress-ring {
+  will-change: transform;
+}
+
+.nexus-btn-glow-ring,
+.nexus-particle {
+  will-change: transform, opacity;
+}
