@@ -943,35 +943,52 @@
               
               <div style="background: rgba(255, 255, 255, 0.05); padding: 2vw; border-radius: 20px; backdrop-filter: blur(20px); border: 1px solid rgba(255, 107, 53, 0.2);">
                 <h3 style="font-size: 1.8vw; margin-bottom: 1.5vw; color: #ff6b35; text-align: center;">Démarrer Votre Projet</h3>
-                <form style="display: grid; gap: 1vw;">
+                <form action="https://formspree.io/f/mwpkgvrz" method="POST" style="display: grid; gap: 1vw;" id="contactForm">
                   <div>
                     <label style="display: block; margin-bottom: 0.3vw; color: #efeae3; font-size: 0.9vw;">Nom complet *</label>
-                    <input type="text" required style="width: 100%; padding: 0.7vw; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); font-size: 0.9vw; box-sizing: border-box;">
+                    <input type="text" name="name" required placeholder="Votre nom complet" style="width: 100%; padding: 0.7vw; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); font-size: 0.9vw; box-sizing: border-box;">
                   </div>
                   
                   <div>
                     <label style="display: block; margin-bottom: 0.3vw; color: #efeae3; font-size: 0.9vw;">Email *</label>
-                    <input type="email" required style="width: 100%; padding: 0.7vw; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); font-size: 0.9vw; box-sizing: border-box;">
+                    <input type="email" name="email" required placeholder="votre.email@example.com" style="width: 100%; padding: 0.7vw; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); font-size: 0.9vw; box-sizing: border-box;">
+                  </div>
+                  
+                  <div>
+                    <label style="display: block; margin-bottom: 0.3vw; color: #efeae3; font-size: 0.9vw;">Téléphone</label>
+                    <input type="tel" name="phone" placeholder="+213 XX XX XX XX XX" style="width: 100%; padding: 0.7vw; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); font-size: 0.9vw; box-sizing: border-box;">
                   </div>
                   
                   <div>
                     <label style="display: block; margin-bottom: 0.3vw; color: #efeae3; font-size: 0.9vw;">Type de partenariat</label>
-                    <select style="width: 100%; padding: 0.7vw; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); font-size: 0.9vw; box-sizing: border-box;">
-                      <option>Résidence Universitaire</option>
-                      <option>Partenariat Technologique</option>
-                      <option>Investissement</option>
-                      <option>Autre</option>
+                    <select name="partnership_type" style="width: 100%; padding: 0.7vw; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); font-size: 0.9vw; box-sizing: border-box;">
+                      <option value="">Sélectionnez un type</option>
+                      <option value="residence_universitaire">Résidence Universitaire</option>
+                      <option value="partenariat_technologique">Partenariat Technologique</option>
+                      <option value="investissement">Investissement</option>
+                      <option value="centre_commercial">Centre Commercial</option>
+                      <option value="autre">Autre</option>
                     </select>
                   </div>
                   
                   <div>
                     <label style="display: block; margin-bottom: 0.3vw; color: #efeae3; font-size: 0.9vw;">Message *</label>
-                    <textarea required rows="3" style="width: 100%; padding: 0.7vw; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); font-size: 0.9vw; resize: vertical; box-sizing: border-box;"></textarea>
+                    <textarea name="message" required rows="3" placeholder="Décrivez votre projet ou demande..." style="width: 100%; padding: 0.7vw; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); font-size: 0.9vw; resize: vertical; box-sizing: border-box;"></textarea>
                   </div>
                   
-                  <button type="submit" style="background: linear-gradient(45deg, #ff6b35, #f7931e); color: white; padding: 1vw; border: none; border-radius: 25px; font-size: 1vw; font-weight: bold; cursor: pointer; transition: transform 0.3s ease; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);">
-                    Démarrer Votre Projet 🚀
+                  <!-- Hidden fields for better tracking -->
+                  <input type="hidden" name="_subject" value="Nouvelle demande de partenariat - Necib Luxe Wash">
+                  <input type="hidden" name="_next" value="https://luxe-wash.necibnexus.com/thank-you">
+                  <input type="hidden" name="_language" value="fr">
+                  
+                  <button type="submit" id="submitBtn" style="background: linear-gradient(45deg, #ff6b35, #f7931e); color: white; padding: 1vw; border: none; border-radius: 25px; font-size: 1vw; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3); position: relative; overflow: hidden;">
+                    <span id="submitText">Démarrer Votre Projet 🚀</span>
+                    <div id="submitLoader" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite;"></div>
                   </button>
+                  
+                  <div id="formStatus" style="text-align: center; margin-top: 1vw; display: none;">
+                    <p id="statusMessage" style="margin: 0; font-size: 0.9vw;"></p>
+                  </div>
                 </form>
               </div>
             </div>
